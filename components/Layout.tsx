@@ -1,4 +1,4 @@
-import { FC, ReactNode, useState, useEffect } from 'react';
+import { FC, ReactNode, useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { useTranslation } from '@/hooks/useTranslation';
 import { projects } from '@/lib/data';
@@ -19,11 +19,7 @@ const Header: FC = () => {
   useEffect(() => {
     document.body.classList.toggle('mobile-nav-open', isMobileNavOpen);
   }, [isMobileNavOpen]);
-<<<<<<< Updated upstream
-  
-=======
 
->>>>>>> Stashed changes
   return (
     <>
       <header className="topbar">
@@ -88,7 +84,8 @@ const Header: FC = () => {
 };
 
 const SocialAside: FC = () => {
-<<<<<<< Updated upstream
+  const [isQrModalOpen, setQrModalOpen] = useState(false);
+
   return (
     <>
       <aside className="social" aria-label="Social links">
@@ -104,52 +101,43 @@ const SocialAside: FC = () => {
             <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
           </svg>
         </a>
-        <a href="https://api.whatsapp.com/send?phone=201099993903" target="_blank" aria-label="WhatsApp" rel="noopener" title="WhatsApp">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 12c0 1.74.45 3.48 1.34 5l-1.4 5.02 5.13-1.37c1.45.81 3.09 1.25 4.74 1.25h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2"></path>
+        <a href="https://api.whatsapp.com/send?phone=201099993903" target="_blank" aria-label="WhatsApp" rel="noopener" title="WhatsApp" className="whatsapp-outline">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
           </svg>
         </a>
         <a href="tel:+201099993903" aria-label="Call" title="Call">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24c1.12.37 2.33.57 3.57.57c.55 0 1 .45 1 1V20c0 .55-.45 1-1 1c-9.39 0-17-7.61-17-17c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1c0 2.01.49 3.92 1.4 5.79z" />
+            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24c1.12.37 2.33.57 3.57.57c.55 0 1 .45 1 1V20c0 .55-.45 1-1 1c-9.39 0-17-7.61-17-17c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1c0 1.25.2 2.45.57 3.57c.11.35.03.74-.25 1.02l-2.2 2.2z"/>
           </svg>
         </a>
+        <button onClick={() => setQrModalOpen(true)} aria-label="QR Code" title="QR Code">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <rect width="5" height="5" x="3" y="3" rx="1"></rect>
+            <rect width="5" height="5" x="16" y="3" rx="1"></rect>
+            <rect width="5" height="5" x="3" y="16" rx="1"></rect>
+            <path d="M21 16h-3a2 2 0 0 0-2 2v3"></path>
+            <path d="M21 21v.01"></path>
+            <path d="M12 7v3a2 2 0 0 1-2 2H7"></path>
+            <path d="M3 12h.01"></path>
+            <path d="M12 3h.01"></path>
+            <path d="M12 16v.01"></path>
+            <path d="M16 12h1"></path>
+            <path d="M21 12v.01"></path>
+            <path d="M12 21v-1"></path>
+          </svg>
+        </button>
       </aside>
+      {isQrModalOpen && (
+        <div className="modal-overlay" onClick={() => setQrModalOpen(false)}>
+          <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+            <button onClick={() => setQrModalOpen(false)} className="modal-close" aria-label="Close">&times;</button>
+            <img src="https://i.ibb.co/VcMs0Brb/My-Business-Page.png" alt="Scan & Contact QR Code" />
+          </div>
+        </div>
+      )}
     </>
   );
-=======
-    const [isQrModalOpen, setQrModalOpen] = useState(false);
-
-    return (
-        <>
-            <aside className="social" aria-label="Social links">
-                <a href="https://www.facebook.com/SIGHTRealEstate.eg" target="_blank" aria-label="Facebook" rel="noopener" title="Facebook">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-                </a>
-                <a href="https://www.instagram.com/sightrealestate.eg" target="_blank" aria-label="Instagram" rel="noopener" title="Instagram">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line></svg>
-                </a>
-                <a href="https://api.whatsapp.com/send?phone=201099993903" target="_blank" aria-label="WhatsApp" rel="noopener" title="WhatsApp" className="whatsapp-outline">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-                </a>
-                <a href="tel:+201099993903" aria-label="Call" title="Call">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24c1.12.37 2.33.57 3.57.57c.55 0 1 .45 1 1V20c0 .55-.45 1-1 1c-9.39 0-17-7.61-17-17c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1c0 1.25.2 2.45.57 3.57c.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                </a>
-                <button onClick={() => setQrModalOpen(true)} aria-label="QR Code" title="QR Code">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect width="5" height="5" x="3" y="3" rx="1"></rect><rect width="5" height="5" x="16" y="3" rx="1"></rect><rect width="5" height="5" x="3" y="16" rx="1"></rect><path d="M21 16h-3a2 2 0 0 0-2 2v3"></path><path d="M21 21v.01"></path><path d="M12 7v3a2 2 0 0 1-2 2H7"></path><path d="M3 12h.01"></path><path d="M12 3h.01"></path><path d="M12 16v.01"></path><path d="M16 12h1"></path><path d="M21 12v.01"></path><path d="M12 21v-1"></path></svg>
-                </button>
-            </aside>
-            {isQrModalOpen && (
-                <div className="modal-overlay" onClick={() => setQrModalOpen(false)}>
-                    <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-                        <button onClick={() => setQrModalOpen(false)} className="modal-close" aria-label="Close">&times;</button>
-                        <img src="https://i.ibb.co/VcMs0Brb/My-Business-Page.png" alt="Scan & Contact QR Code" />
-                    </div>
-                </div>
-            )}
-        </>
-    );
->>>>>>> Stashed changes
 };
 
 const CookieBar: FC = () => {
@@ -259,13 +247,8 @@ const Layout: FC<{ children: ReactNode }> = ({ children }) => {
       </Link>
 
       <main>{children}</main>
-<<<<<<< Updated upstream
-      {isHome && <SocialAside />}
-=======
-
       <Footer />
       <CookieBar />
->>>>>>> Stashed changes
     </>
   );
 };
