@@ -1,5 +1,4 @@
 import { FC, useState, useEffect } from 'react';
-
 const Lightbox: FC<{ images: string[]; startIndex: number; onClose: () => void }> = ({ images, startIndex, onClose }) => {
   const [currentIndex, setCurrentIndex] = useState(startIndex);
   const showPrev = () => setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
@@ -31,5 +30,4 @@ const Lightbox: FC<{ images: string[]; startIndex: number; onClose: () => void }
     </div>
   );
 };
-
 export default Lightbox;
